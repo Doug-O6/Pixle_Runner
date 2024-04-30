@@ -36,6 +36,11 @@ player_surf = pygame.image.load('graphics/player/player_walk_1.png').convert_alp
 player_rect = player_surf.get_rect(midbottom = (80,300))
 player_gravity = 0
 
+# Intro screen -----
+player_stand = pygame.image.load('graphics/player/player_stand.png').convert_alpha()
+player_stand = pygame.transform.rotozoom(player_stand,30,2)
+player_stand_rect = player_stand.get_rect(center = (400,200))
+
 while True:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
@@ -81,12 +86,11 @@ while True:
     if player_rect.bottom >= 300: player_rect.bottom = 300
     screen.blit(player_surf,player_rect)
 
-    if player_rect.colliderect(snail_rect):  print('collision')  #returns 0 or 1
-
     if snail_rect.colliderect(player_rect):
       game_active = False
   else:                       # Game end code ---------------------------
-    screen.fill('Yellow')
+    screen.fill((94,129,162))
+    screen.blit(player_stand,player_stand_rect)
   
   # Pygame display refresh rate = 60 times/sec
   pygame.display.update()
