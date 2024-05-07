@@ -1,5 +1,6 @@
 # Pixel Runner is a simple game of dodging obstacles (flies and snails).
 # This stage of the development has the plyer, fly, and snail animated.
+# Parallel versions of the game are coded with functions and classes
 # Using (https://www.youtube.com/watch?v=AY9MnQ4x3zk)
 
 import pygame
@@ -148,6 +149,7 @@ start_time = 0
 score = 0
 bg_music = pygame.mixer.Sound('audio/music.wav')
 bg_music.play(loops = 1)                         # background music -1 runs forever
+bg_music.set_volume(0.1)
                                                  # or repeat a number of times
 # Groups  ---------------------------
 player = pygame.sprite.GroupSingle()
@@ -213,6 +215,7 @@ pygame.time.set_timer(snail_animation_timer, 500)
 fly_animation_timer = pygame.USEREVENT + 3
 pygame.time.set_timer(fly_animation_timer, 200)
 
+#  Game loop  ----------------------------------------------------
 while True:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
